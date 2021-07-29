@@ -6,43 +6,51 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-        
-    def insert_to_head(self, data):
-        new_node = Node(data)
+
+
+    def insertToHead(self, data):
+        new_node = Node(data);
         if self.head:
-            new_node.next = self.head
+            new_node. next = self.head
             self.head = new_node
         else:
             self.head = new_node
-    
-    def insert_at_last(self, data):
+
+    def insertToTail(self, data):
         new_node = Node(data)
         if self.head:
-            current = self.head
-            while current.next:
-                current = current.next
-            current.next = new_node
+            cur = self.head
+            while cur.next:
+                cur = cur.next
+            cur.next = new_node
         else:
             self.head = new_node
+
+    def printList(self):
+        cur = self.head
+        while cur:
+            print(cur.data)
+            cur = cur.next
+
+    def hasLoop(self):
+        if not self.head:
+            return False
+        slowP, fastP = self.head, self.head
             
-    def print_linked_list(self):
-        current = self.head
-        while current:
-            print(current.data)
-            current = current.next
-        
+
 LL = LinkedList()
-# LL.insert_to_head(1)
-# LL.insert_to_head(2)
-# LL.insert_to_head(3)
-# LL.insert_to_head(4)
-# LL.insert_to_head(5)
+LL.insertToHead(1)
+LL.insertToHead(2)
+LL.insertToHead(3)
+LL.insertToHead(4)
+LL.insertToHead(5)
 
+LL.head.next.next.next = LL.head.next
 
-LL.insert_at_last(1)
-LL.insert_at_last(2)
-LL.insert_at_last(3)
-LL.insert_at_last(4)
-LL.insert_at_last(5)
+# LL.insertToTail(1)
+# LL.insertToTail(2)
+# LL.insertToTail(3)
+# LL.insertToTail(4)
+# LL.insertToTail(5)
 
-LL.print_linked_list()
+LL.printList()
