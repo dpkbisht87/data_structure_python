@@ -299,17 +299,67 @@ class LinkedList:
         else:
             return True
 
-# IS PALLINDROME
-llist_2 = LinkedList()
-llist_2.append("R")
-llist_2.append("A")
-llist_2.append("D")
-llist_2.append("A")
-llist_2.append("R")
+    def reverseMergedList(self, l2):
+        cur1, cur2 = self.head, l2
+        cur2 = l2.head
+        q1 = []
+        q2 = []
+        while cur1 :
+            print(cur1.data, end = ' ')
+            q1.append(cur1.data)
+            cur1 =cur1.next
 
-# print(llist_2.is_pallindrom_using_sting())
-print(llist_2.is_pallindrom_using_stack())
-print(llist_2.is_pallindrom_using_two_pointers())
+        while cur2:
+            print(cur2.data, end = ' ')
+            q2.append(cur2.data)
+            cur2 = cur2.next
+        print()
+        result = LinkedList()
+        while q1 and q2:
+            f1 = q1[len(q1) - 1]
+            f2 = q2[len(q2) - 1]
+            if f1 >= f2:
+                print(f1)
+                result.append(q1.pop())
+            else:
+                print(f2)
+                result.append(q2.pop())
+
+        if not q2:
+            while q1:
+                result.append(q1.pop())
+        if not q1:
+            while q2:
+                result.append(q2.pop())
+
+        result.print_list()
+
+
+llist_1 = LinkedList()
+llist_1.append(1)
+llist_1.append(5)
+llist_1.append(7)
+llist_1.append(9)
+llist_1.append(10)
+
+llist_2 = LinkedList()
+llist_2.append(2)
+llist_2.append(3)
+llist_2.append(4)
+llist_2.append(6)
+llist_2.append(8)
+l3 = llist_1.reverseMergedList(llist_2)
+# IS PALLINDROME
+# llist_2 = LinkedList()
+# llist_2.append("R")
+# llist_2.append("A")
+# llist_2.append("D")
+# llist_2.append("A")
+# llist_2.append("R")
+
+# # print(llist_2.is_pallindrom_using_sting())
+# print(llist_2.is_pallindrom_using_stack())
+# print(llist_2.is_pallindrom_using_two_pointers())
 
 #ROTATE AROUND A NODE
 # llist = LinkedList()
@@ -391,7 +441,5 @@ print(llist_2.is_pallindrom_using_two_pointers())
 
 # llist_1.merge_sorted(llist_2)
 # llist_1.print_list()
-
-
 
 
